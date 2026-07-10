@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Universe ❤️</title>
+    <!-- Importing Premium Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Playfair+Display:ital,wght@1,600&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Luxurious dark maroon and soft black velvet gradient */
+            background: radial-gradient(circle at center, #2e0005 0%, #120002 60%, #050001 100%);
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+            cursor: pointer;
+            perspective: 1000px;
+        }
+
+        /* Ambient Glow Behind Container */
+        .ambient-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(162, 10, 34, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: 1;
+            pointer-events: none;
+            animation: pulseGlow 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.3); opacity: 1; }
+        }
+
+        /* Welcome / Pulse Heart Screen */
+        #start-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #090001;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .big-heart-container {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .big-heart {
+            font-size: 85px;
+            animation: heartPulse 1.4s infinite ease-in-out;
+            filter: drop-shadow(0 0 20px rgba(214, 48, 49, 0.7));
+            transition: transform 0.3s ease;
+        }
+
+        .big-heart-container:hover .big-heart {
+            transform: scale(1.1);
+        }
+
+        .heart-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90px;
+            height: 90px;
+            border: 2px solid rgba(255, 118, 117, 0.4);
+            border-radius: 50%;
+            animation: ringEmit 2s infinite linear;
+            pointer-events: none;
+        }
+
+        .start-text {
+            margin-top: 30px;
+            color: #ff7675;
+            font-weight: 700;
+            font-size: 1.15rem;
+            letter-spacing: 2px;
+            font-family: 'Quicksand', sans-serif;
+            text-transform: uppercase;
+            opacity: 0.8;
+            animation: textFade 2s infinite ease-in-out;
+        }
+
+        @keyframes heartPulse {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.12); }
+            60% { transform: scale(1); }
+            80% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes ringEmit {
+            0% { width: 90px; height: 90px; opacity: 1; }
+            100% { width: 220px; height: 220px; opacity: 0; }
+        }
+
+        @keyframes textFade {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Premium Glassmorphic Main Card */
+        .container {
+            padding: 50px 35px;
+            background: rgba(255, 255, 255, 0.04); 
+            border-radius: 35px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85),
+                        inset 0 1px 2px rgba(255, 255, 255, 0.1);
+            z-index: 10;
+            max-width: 460px;
+            width: 90%;
+            transform: scale(0.85) translateY(20px);
+            opacity: 0;
+            transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .container.show {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        /* Premium Fonts for Header */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 2.8rem;
+            background: linear-gradient(to right, #ff7675, #ffb8b8, #ffeaa7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            animation: slowShimmer 6s infinite linear;
+        }
+
+        @keyframes slowShimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        /* Custom Elegant Typography for the Typewriter Content */
+        .message-box {
+            min-height: 140px;
+            font-family: 'Caveat', cursive;
+            font-size: 1.85rem;
+            color: #fff6e0;
+            line-height: 1.5;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-shadow: 0 2px 10px rgba(255, 246, 224, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        /* Smooth Blinking Cursor */
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.8rem;
+            background-color: #ff7675;
+            margin-left: 5px;
+            animation: blink 0.8s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Super Premium Flowing Smooth Floating Items */
+        .floating-item {
+            position: absolute;
+            pointer-events: none;
+            bottom: -60px;
+            opacity: 0;
+            animation: elegantFloat 7s cubic-bezier(0.11, 0, 0.5, 1) infinite;
+        }
+
+        @keyframes elegantFloat {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(0.6);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.65;
+            }
+            85% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-120vh) translateX(var(--drift)) rotate(var(--rot)) scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        /* Burst Particles from clicks */
+        .sparkle-item {
+            position: absolute;
+            pointer-events: none;
+            animation: physicsPop 0.9s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+            font-size: 24px;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+        }
+
+        @keyframes physicsPop {
+            0% {
+                transform: translate(-50%, -50%) scale(0.4);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--mx), var(--my)) scale(1.3) rotate(var(--r));
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+
+    <div id="start-screen" onclick="startMagic()">
+        <div class="big-heart-container">
+            <div class="big-heart">❤️</div>
+            <div class="heart-ring"></div>
+        </div>
+        <div class="start-text">Touch to unveil, Annuragini ✨</div>
+    </div>
+
+    <!-- Premium Relaxing Piano Melody -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-beautiful-dream-493.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="container" id="main-content">
+        <h1>For My Universe</h1>
+        <div class="message-box">
+            <span id="typewriter"></span><span class="cursor"></span>
+        </div>
+    </div>
+
+    <script>
+        const loveMessages = [
+            "You are infinitely more exquisite than an entire bouquet of Lilies, Tulips, and Daisies dancing in the spring breeze... 🪻🌷🌼",
+            "Every rhythmic pulse of my heart speaks your name. You have become my absolute today and all of my beautiful tomorrows. ❤️",
+            "Just like your beloved Chocolate Bars and Black Chocolate Cone Ice-cream, you infuse my world with the sweetest, most irresistible flavors! 🍫🍦",
+            "I want to spend a lifetime sharing endless cups of Boba Tea, warm laughs, and peaceful moments by your side. 🧋✨",
+            "Forever seems far too brief when I am with you, Annuragini. You hold the entirety of my soul, always and completely. 💕"
+        ];
+
+        let msgIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const textContainer = document.getElementById('typewriter');
+
+        function startMagic() {
+            document.getElementById('start-screen').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('start-screen').style.display = 'none';
+                document.getElementById('main-content').classList.add('show');
+                
+                const music = document.getElementById('bg-music');
+                if(music) {
+                    music.volume = 0.35; 
+                    music.play().catch(function(e) { console.log("Interaction triggered audio"); });
+                }
+                
+                typeWriter();
+            }, 900);
+            
+            // Seamlessly trigger gorgeous floating elements
+            setInterval(createFloatingItem, 380);
+        }
+
+        function typeWriter() {
+            const currentFullText = loveMessages[msgIndex];
+            
+            if (!isDeleting) {
+                // Typing text smoothly
+                textContainer.innerHTML = currentFullText.substring(0, charIndex + 1);
+                charIndex++;
+                
+                let typingSpeed = 60 + Math.random() * 40; // Adds a natural human-like variation
+                
+                if (charIndex === currentFullText.length) {
+                    isDeleting = true;
+                    setTimeout(typeWriter, 4500); // Wait long enough to read beautifully
+                } else {
+                    setTimeout(typeWriter, typingSpeed);
+                }
+            } else {
+                // Erasing text smoothly
+                textContainer.innerHTML = currentFullText.substring(0, charIndex - 1);
+                charIndex--;
+                
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    msgIndex = (msgIndex + 1) % loveMessages.length; // Loop infinitely smoothly
+                    setTimeout(typeWriter, 600);
+                } else {
+                    setTimeout(typeWriter, 25);
+                }
+            }
+        }
+
+        function createFloatingItem() {
+            // Curated floral, star and light heart vectors
+            const items = ['❤️', '🌷', '🌼', '🪻', '💖', '✨', '💕', '✨'];
+            const item = document.createElement('div');
+            item.classList.add('floating-item');
+            item.innerText = items[Math.floor(Math.random() * items.length)];
+            
+            // Setting smart random visual offsets
+            item.style.left = (Math.random() * 95) + 'vw';
+            item.style.setProperty('--drift', (Math.random() * 160 - 80) + 'px');
+            item.style.setProperty('--rot', (Math.random() * 360) + 'deg');
+            item.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            item.style.fontSize = (Math.random() * 12 + 18) + 'px';
+            
+            document.body.appendChild(item);
+            setTimeout(() => { item.remove(); }, 8000);
+        }
+
+        // On-click physics-based particle burst (Boba, Chocolates, Flowers)
+        document.body.addEventListener('click', function(e) {
+            if(document.getElementById('start-screen').style.display === 'none') {
+                const burstPool = ['🍫', '🍦', '🧋', '🌷', '🌼', '❤️', '💖', '✨'];
+                for (let i = 0; i < 8; i++) {
+                    const spark = document.createElement('div');
+                    spark.classList.add('sparkle-item');
+                    spark.innerText = burstPool[Math.floor(Math.random() * burstPool.length)];
+                    spark.style.top = e.clientY + 'px';
+                    spark.style.left = e.clientX + 'px';
+                    
+                    // Complex physics vectors for explosion effect
+                    const angle = Math.random() * Math.PI * 2;
+                    const velocity = 60 + Math.random() * 120;
+                    const mx = Math.cos(angle) * velocity + 'px';
+                    const my = Math.sin(angle) * velocity + 'px';
+                    const randomRotation = (Math.random() * 360) + 'deg';
+                    
+                    spark.style.setProperty('--mx', mx);
+                    spark.style.setProperty('--my', my);
+                    spark.style.setProperty('--r', randomRotation);
+                    
+                    document.body.appendChild(spark);
+                    setTimeout(() => { spark.remove(); }, 900);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
